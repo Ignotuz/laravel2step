@@ -93,10 +93,10 @@ trait Laravel2StepTrait
     private function generateCode(int $length = 4, string $prefix = '', string $suffix = '')
     {
         for ($i = 0; $i < $length; $i++) {
-            $prefix .= random_int(0, 1) ? chr(random_int(65, 90)) : random_int(0, 9);
+            $prefix .= (random_int(0, 1) && !config('laravel2step.laravel2stepOnlyNumbers')) ? chr(random_int(65, 90)) : random_int(0, 9);
         }
 
-        return $prefix.$suffix;
+        return $prefix . $suffix;
     }
 
     /**
